@@ -22,21 +22,21 @@ public NotificationCompat.Builder mBuilder;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createNotificationChannel();
+//        createNotificationChannel();
 
-        mBuilder = new NotificationCompat.Builder(this, "NotiID")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("My notification")
-                .setContentText("Much longer text that cannot fit one line...")
-                .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("Much longer text that cannot fit one line..."))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//        mBuilder = new NotificationCompat.Builder(this, "NotiID")
+//                .setSmallIcon(R.drawable.ic_launcher_foreground)
+//                .setContentTitle("My notification")
+//                .setContentText("Much longer text that cannot fit one line...")
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Much longer text that cannot fit one line..."))
+//                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         // Create an explicit intent for an Activity in your app
         Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
-        NotificationCompat.Builder mmBuilder = new NotificationCompat.Builder(this, "NotiID")
+        mBuilder = new NotificationCompat.Builder(this, "NotiID")
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("My notification")
                 .setContentText("Hello World!")
@@ -67,10 +67,7 @@ public NotificationCompat.Builder mBuilder;
 
 
     public void btn_clickEvent(View view) {
-
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-
-// notificationId is a unique int for each notification that you must define
         notificationManager.notify(123, mBuilder.build());
     }
 }
